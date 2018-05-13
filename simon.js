@@ -13,42 +13,30 @@ var audioTwo = new Audio("/sounds/simonSound2.mp3");
 var audioThree = new Audio("/sounds/simonSound3.mp3");
 var audioFour = new Audio("/sounds/simonSound4.mp3");
 var sequence = []; // empty arr to fill with pattern sequence
-var numArr = [1, 2, 3, 4]; //arr to choose random no: from that corresponds to colors
+var numArr = ['1', '2', '3', '4']; //arr to choose random no: from that corresponds to colors
 var userSequence = [];
 
 start.addEventListener("click", startSequence);
 
 yellow.addEventListener("click", function(){
-  yellow.style.backgroundColor = "#E2BA00"; //change bg color on click
-  userSequence.push(1);                     // push color number to user array
+  userSequence.push('1');                     // push color number to user array
   userSeqDisplay.innerHTML = userSequence;
-  setTimeout(function() {
-  yellow.style.backgroundColor = "yellow"; //change bg color back after
-}, 500);                                   //half a second
+  yellowFlash();
 });
 blue.addEventListener("click", function(){
-  blue.style.backgroundColor = "#5054B4";
-  userSequence.push(2);
+  userSequence.push('2');
   userSeqDisplay.innerHTML = userSequence;
-  setTimeout(function() {
-  blue.style.backgroundColor = "blue";
-}, 500);
+  blueFlash();
 });
 green.addEventListener("click", function(){
-  green.style.backgroundColor = "#004400";
-  userSequence.push(3);
+  userSequence.push('3');
   userSeqDisplay.innerHTML = userSequence;
-  setTimeout(function() {
-  green.style.backgroundColor = "green";
-}, 500);
+  greenFlash();
 });
 red.addEventListener("click", function(){
-  red.style.backgroundColor = "#76322B";
-  userSequence.push(4);
+  userSequence.push('4');
   userSeqDisplay.innerHTML = userSequence;
-  setTimeout(function() {
-  red.style.backgroundColor = "red";
-}, 500);
+  redFlash();
 });
 
 
@@ -59,30 +47,58 @@ messageBoard.innerHTML = sequence;
 playColors();
 }
 
+function yellowFlash(){
+  yellow.style.backgroundColor = "#E2BA00";
+  setTimeout(function() {
+  yellow.style.backgroundColor = "yellow";
+  }, 1000);
+};
+function blueFlash(){
+  blue.style.backgroundColor = "#5054B4";
+  setTimeout(function() {
+  blue.style.backgroundColor = "blue";
+  }, 1000);
+};
+function greenFlash(){
+  green.style.backgroundColor = "#004400";
+  setTimeout(function() {
+  green.style.backgroundColor = "green";
+  }, 1000);
+};
+function redFlash(){
+  red.style.backgroundColor = "#76322B";
+  setTimeout(function() {
+  red.style.backgroundColor = "red";
+  }, 1000);
+};
+
+var indexPos = 0;
+
 function playColors(){
   for (var i=0; i < sequence.length; i++){
-    if (sequence[i] === 1){
-      yellow.style.backgroundColor = "#E2BA00";
+    if (sequence[i] === '1'){
       setTimeout(function() {
-      yellow.style.backgroundColor = "yellow";
-      }, 1000);
-    } if (sequence[i] === 2){
-      blue.style.backgroundColor = "#5054B4";
-      setTimeout(function() {
-      blue.style.backgroundColor = "blue";
-      }, 1000);
-    } if (sequence === 3){
-      green.style.backgroundColor = "#004400";
-      setTimeout(function() {
-      green.style.backgroundColor = "green";
-      }, 1000);
-    } if (sequence[i] === 4){
-      red.style.backgroundColor = "#76322B";
-      setTimeout(function() {
-      red.style.backgroundColor = "red";
-      }, 1000);
+        yellowFlash();
+      }, indexPos);         //set delay to run color flash
+      indexPos += 1000;    //inc delay by one dec
+    } else if (sequence[i]=== '2'){
+        setTimeout(function() {
+      blueFlash();
+        }, indexPos);
+        indexPos += 1000;
+    } else if (sequence[i] === '3'){
+        setTimeout(function() {
+      greenFlash();
+        }, indexPos);
+        indexPos += 1000;
+    } else if (sequence[i] === '4'){
+        setTimeout(function() {
+      redFlash();
+        }, indexPos);
+        indexPos += 1000;
     }
   }
-}
+  indexPos = 0;     //after iterated through entire arr reset delay
+};
 
 }
