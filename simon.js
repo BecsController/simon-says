@@ -58,22 +58,22 @@ function playColors(){
       yellow.style.backgroundColor = "#E2BA00";
       setTimeout(function() {
       yellow.style.backgroundColor = "yellow";
-    }, 1000);
-  } if (sequence[i] === 2){
-      green.style.backgroundColor = "#004400";
-      setTimeout(function() {
-      green.style.backgroundColor = "green";
-    }, 1000);
-  } if (sequence === 3){
-      red.style.backgroundColor = "#76322B";
-      setTimeout(function() {
-      red.style.backgroundColor = "red";
-    }, 1000);
-  } if (sequence[i] === 4){
+      }, 1000);
+    } if (sequence[i] === 2){
       blue.style.backgroundColor = "#5054B4";
       setTimeout(function() {
       blue.style.backgroundColor = "blue";
-    }, 1000);
+      }, 1000);
+    } if (sequence === 3){
+      green.style.backgroundColor = "#004400";
+      setTimeout(function() {
+      green.style.backgroundColor = "green";
+      }, 1000);
+    } if (sequence[i] === 4){
+      red.style.backgroundColor = "#76322B";
+      setTimeout(function() {
+      red.style.backgroundColor = "red";
+      }, 1000);
     }
   }
 }
