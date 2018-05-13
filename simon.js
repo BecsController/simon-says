@@ -7,43 +7,50 @@ var red = document.getElementsByClassName("red")[0];
 var yellow = document.getElementsByClassName("yellow")[0];
 var start = document.getElementsByClassName("start")[0];
 var messageBoard = document.getElementsByClassName("messageBoard")[0];
+var userSeqDisplay = document.getElementsByClassName("userSeq")[0];
 var audioOne = new Audio("/sounds/simonSound1.mp3");
 var audioTwo = new Audio("/sounds/simonSound2.mp3");
 var audioThree = new Audio("/sounds/simonSound3.mp3");
 var audioFour = new Audio("/sounds/simonSound4.mp3");
 var sequence = []; // empty arr to fill with pattern sequence
 var numArr = [1, 2, 3, 4]; //arr to choose random no: from that corresponds to colors
+var userSequence = [];
 
 start.addEventListener("click", startSequence);
 
 yellow.addEventListener("click", function(){
   yellow.style.backgroundColor = "#E2BA00"; //change bg color on click
-  audioOne.play();
+  userSequence.push(1);                     // push color number to user array
+  userSeqDisplay.innerHTML = userSequence;
   setTimeout(function() {
   yellow.style.backgroundColor = "yellow"; //change bg color back after
 }, 500);                                   //half a second
 });
+blue.addEventListener("click", function(){
+  blue.style.backgroundColor = "#5054B4";
+  userSequence.push(2);
+  userSeqDisplay.innerHTML = userSequence;
+  setTimeout(function() {
+  blue.style.backgroundColor = "blue";
+}, 500);
+});
 green.addEventListener("click", function(){
   green.style.backgroundColor = "#004400";
-  audioTwo.play();
+  userSequence.push(3);
+  userSeqDisplay.innerHTML = userSequence;
   setTimeout(function() {
   green.style.backgroundColor = "green";
 }, 500);
 });
 red.addEventListener("click", function(){
   red.style.backgroundColor = "#76322B";
-  audioThree.play();
+  userSequence.push(4);
+  userSeqDisplay.innerHTML = userSequence;
   setTimeout(function() {
   red.style.backgroundColor = "red";
 }, 500);
 });
-blue.addEventListener("click", function(){
-  blue.style.backgroundColor = "#5054B4";
-  audioFour.play();
-  setTimeout(function() {
-  blue.style.backgroundColor = "blue";
-}, 500);
-});
+
 
 function startSequence(){
 var randomNo = Math.floor(Math.random() * 4);
