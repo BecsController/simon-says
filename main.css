@@ -21,6 +21,15 @@ body {
   justify-content: center;
   height: 50rem;
 }
+.start{
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  padding-bottom: .5rem;
+}
 .title{
   color: #fff;
   display: flex;
