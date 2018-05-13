@@ -46,6 +46,14 @@ body {
   text-align: center;
   font-size: 4rem;
 }
+.userSeq{
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+}
 .simon{
   height: 6rem;
   background-color: white;
