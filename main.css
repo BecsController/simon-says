@@ -46,24 +46,29 @@ body {
   justify-content: center;
   text-align: center;
   font-size: 2rem;
+  border-radius: 15px 15px 15px 15px;
 }
 .blue{
   height: 5rem;
   background-color: blue;
   border: 5px solid #363636;
+  border-radius: 5px 50px 15px 5px;
 }
 .green{
   height: 5rem;
   background-color: green;
   border: 5px solid #363636;
+  border-radius: 5px 15px 50px 5px;
 }
 .red{
   height: 5rem;
   background-color: red;
   border: 5px solid #363636;
+  border-radius: 15px 5px 5px 50px;
 }
 .yellow{
   height: 5rem;
   background-color: yellow;
   border: 5px solid #363636;
+  border-radius: 50px 5px 5px 15px;
 }
