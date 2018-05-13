@@ -41,8 +41,36 @@ blue.addEventListener("click", function(){
 }, 500);
 });
 
+function startSequence(){
 var randomNo = numArr[Math.floor(Math.random() * 3)];
 sequence.push(numArr[randomNo]);
+playColors();
+}
 
+function playColors(){
+  for (var i=0; i < sequence.length; i++){
+    if (sequence[i] === 1){
+      yellow.style.backgroundColor = "#E2BA00";
+      setTimeout(function() {
+      yellow.style.backgroundColor = "yellow";
+    }, 500);
+  } if (sequence[i] === 2){
+    green.style.backgroundColor = "#004400";
+    setTimeout(function() {
+    green.style.backgroundColor = "green";
+  }, 500);
+} if (sequence === 3){
+  red.style.backgroundColor = "#76322B";
+  setTimeout(function() {
+  red.style.backgroundColor = "red";
+}, 500);
+} if (sequence[i] === 4){
+  blue.style.backgroundColor = "#5054B4";
+  setTimeout(function() {
+  blue.style.backgroundColor = "blue";
+}, 500);
+}
+  }
+}
 
 }
