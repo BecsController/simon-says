@@ -9,6 +9,8 @@ var audioOne = new Audio("/sounds/simonSound1.mp3");
 var audioTwo = new Audio("/sounds/simonSound2.mp3");
 var audioThree = new Audio("/sounds/simonSound3.mp3");
 var audioFour = new Audio("/sounds/simonSound4.mp3");
+var sequence = []; // empty arr to fill with pattern sequence
+var numArr = [1, 2, 3, 4]; //arr to choose random no: from that corresponds to colors
 
 yellow.addEventListener("click", function(){
   yellow.style.backgroundColor = "#E2BA00"; //change bg color on click
@@ -38,5 +40,9 @@ blue.addEventListener("click", function(){
   blue.style.backgroundColor = "blue";
 }, 500);
 });
+
+var randomNo = numArr[Math.floor(Math.random() * 3)];
+sequence.push(numArr[randomNo]);
+
 
 }
