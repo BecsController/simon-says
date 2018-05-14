@@ -20,22 +20,18 @@ start.addEventListener("click", startSequence);
 
 yellow.addEventListener("click", function(){
   userSequence.push('1');                     // push color number to user array
-  userSeqDisplay.innerHTML = userSequence;
   yellowFlash();
 });
 blue.addEventListener("click", function(){
   userSequence.push('2');
-  userSeqDisplay.innerHTML = userSequence;
   blueFlash();
 });
 green.addEventListener("click", function(){
   userSequence.push('3');
-  userSeqDisplay.innerHTML = userSequence;
   greenFlash();
 });
 red.addEventListener("click", function(){
   userSequence.push('4');
-  userSeqDisplay.innerHTML = userSequence;
   redFlash();
 });
 
@@ -43,7 +39,7 @@ red.addEventListener("click", function(){
 function startSequence(){
 var randomNo = Math.floor(Math.random() * 4);
 sequence.push(numArr[randomNo]);
-messageBoard.innerHTML = sequence;
+userSeqDisplay.innerHTML = sequence;
 playColors();
 }
 
