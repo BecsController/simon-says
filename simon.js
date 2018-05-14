@@ -73,7 +73,6 @@ function redFlash(){
 };
 
 var indexPos = 0;
-
 function playColors(){
   for (var i=0; i < sequence.length; i++){
     if (sequence[i] === '1'){
@@ -99,6 +98,25 @@ function playColors(){
     }
   }
   indexPos = 0;     //after iterated through entire arr reset delay
+  setTimeout(function() {
+  compareSequences();
+  }, 8000);
+};
+
+function compareSequences(){
+  if (userSequence.length != sequence.length)
+        sequence = [];
+        userSequence = [];
+        messageBoard.innerHTML = 'You lose!';
+    for (var i = 0, l=this.length; i < l; i++) {
+        if (userSequence[i] != sequence[i]) {
+          sequence = [];
+          userSequence = [];
+          messageBoard.innerHTML = 'You lose!';
+        }
+    }
+      messageBoard.innerHTML = 'Well done!';
+      startSequence();
 };
 
 }
