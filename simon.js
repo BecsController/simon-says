@@ -34,7 +34,7 @@ red.addEventListener("click", function(){
 });
 
 function startSequence(){
-start.classList.add("hide");
+$(".start").animate({opacity:0, visibility:'hidden'}, 200);
 start.removeEventListener("click", startSequence);
 var randomNo = Math.floor(Math.random() * 4); //generate random number between 1 and 4
 sequence.push(numArr[randomNo]);              //push random number to sequence array
