@@ -122,7 +122,6 @@ function compareSequences(){
       userSequence = [];                //wipe user sequence
       messageBoard.innerHTML = 'Well done!'; //show well done message and call new number
       scoreBoard.innerHTML = 'Score Count = ' + scoreCount;
-      alert(sequenceCount);
       startSequence();
     } else {              //else show loss message and play sequence again
       userSequence = [];
@@ -131,7 +130,6 @@ function compareSequences(){
       scoreBoard.innerHTML = 'Score Count = ' + scoreCount;
       sequenceCount -= 1000;
       playColors();
-      alert(sequenceCount);
       }
     };
 
