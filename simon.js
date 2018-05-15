@@ -42,8 +42,8 @@ red.addEventListener("click", function(){
 });
 
 function startSequence(){
-var randomNo = Math.floor(Math.random() * 4);
-sequence.push(numArr[randomNo]);
+var randomNo = Math.floor(Math.random() * 4); //generate random number between 1 and 4
+sequence.push(numArr[randomNo]);              //push random number to sequence array
 userSeqDisplay.innerHTML = 'comp seq is: ' + sequence;
 compSeqDisplay.innerHTML = 'user seq is: ' + userSequence;
 playColors();
@@ -76,11 +76,11 @@ function redFlash(){
 
 var indexPos = 0;
 function playColors(){
-  for (var i=0; i < sequence.length; i++){
+  for (var i=0; i < sequence.length; i++){ //loop through sequence and call color flashes
     if (sequence[i] === '1'){
         setTimeout(function() {
           yellowFlash();
-        }, indexPos);         //set delay to run color flash
+        }, indexPos);         //set a delay before running next color flash
         indexPos += 1000;    //inc delay by one sec by every extra arr position
     } else if (sequence[i]=== '2'){
         setTimeout(function() {
@@ -103,9 +103,11 @@ function playColors(){
   var sequenceCount = (sequence.length * 2000);
   setTimeout(function() {
   compareSequences();
-}, sequenceCount); //delay calling compare by 3 secs for every item in sequence arr
+}, sequenceCount); //delay calling compare by 2 secs for every item in sequence arr
 };
+
 var scoreCount = 0;
+
 function compareSequences(){
   var rightCount = 0;
     for (var i = 0; i < sequence.length; i++) {
@@ -114,7 +116,7 @@ function compareSequences(){
       }
     }
     if (rightCount == sequence.length){ //if number of matches is same as computer array length
-      scoreCount++;
+      scoreCount++;                     //inc score counter
       userSequence = [];                //wipe user sequence
       messageBoard.innerHTML = 'Well done!'; //show well done message and call new number
       scoreBoard.innerHTML = 'Score Count = ' + scoreCount;
