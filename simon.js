@@ -13,7 +13,14 @@ var sequence = []; // empty arr to fill with pattern sequence
 var numArr = ['1', '2', '3', '4']; //arr to choose random no: from that corresponds to colors
 var userSequence = [];
 
-start.addEventListener("click", startSequence);
+start.addEventListener("click", function(){
+  $(".start").animate({opacity:0, visibility:'hidden'}, 200);
+  messageBoard.innerHTML = 'Ready? Go!';
+  $(".messageBoard").removeClass("hide");
+  setTimeout(function(){
+    startSequence();
+  }, 2000);
+});
 resetButton.addEventListener("click", reset);
 
 yellow.addEventListener("click", function(){
@@ -34,7 +41,6 @@ red.addEventListener("click", function(){
 });
 
 function startSequence(){
-$(".start").animate({opacity:0, visibility:'hidden'}, 200);
 start.removeEventListener("click", startSequence);
 var randomNo = Math.floor(Math.random() * 4); //generate random number between 1 and 4
 sequence.push(numArr[randomNo]);              //push random number to sequence array
@@ -43,24 +49,28 @@ playColors();
 
 function yellowFlash(){
   yellow.style.backgroundColor = "#E2BA00";
+  new Audio("sounds/re.mp3").play();
   setTimeout(function() {
   yellow.style.backgroundColor = "yellow";
   }, 500);
 };
 function blueFlash(){
   blue.style.backgroundColor = "#5054B4";
+  new Audio("sounds/mi.mp3").play();
   setTimeout(function() {
   blue.style.backgroundColor = "blue";
   }, 500);
 };
 function greenFlash(){
   green.style.backgroundColor = "#004400";
+  new Audio("sounds/fa.mp3").play();
   setTimeout(function() {
   green.style.backgroundColor = "green";
   }, 500);
 };
 function redFlash(){
   red.style.backgroundColor = "#76322B";
+  new Audio("sounds/so.mp3").play();
   setTimeout(function() {
   red.style.backgroundColor = "red";
   }, 500);

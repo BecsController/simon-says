@@ -27,7 +27,7 @@ body {
   background-color: #000;
   border: 2px solid #fff;
   border-radius: 30px;
-  margin: 10px auto;
+  margin: 20px auto;
 }
 .container{
   display: flex;
@@ -45,7 +45,7 @@ body {
   padding-bottom: .5rem;
 }
 .hide{
-  display: none;
+  visibility: hidden;
 }
 .title{
   color: #fff;
