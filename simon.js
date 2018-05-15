@@ -52,30 +52,30 @@ function yellowFlash(){
   new Audio("sounds/re.mp3").play();
   setTimeout(function() {
   yellow.style.backgroundColor = "yellow";
-  }, 500);
+}, 250);
 };
 function blueFlash(){
   blue.style.backgroundColor = "#5054B4";
   new Audio("sounds/mi.mp3").play();
   setTimeout(function() {
   blue.style.backgroundColor = "blue";
-  }, 500);
+}, 250);
 };
 function greenFlash(){
   green.style.backgroundColor = "#004400";
   new Audio("sounds/fa.mp3").play();
   setTimeout(function() {
   green.style.backgroundColor = "green";
-  }, 500);
+}, 250);
 };
 function redFlash(){
   red.style.backgroundColor = "#76322B";
   new Audio("sounds/so.mp3").play();
   setTimeout(function() {
   red.style.backgroundColor = "red";
-  }, 500);
+}, 250);
 };
-
+var sequenceCount = 2500;
 var indexPos = 0;
 function playColors(){
   for (var i=0; i < sequence.length; i++){ //loop through sequence and call color flashes
@@ -83,26 +83,26 @@ function playColors(){
         setTimeout(function() {
           yellowFlash();
         }, indexPos);         //set a delay before running next color flash
-        indexPos += 1000;    //inc delay by one sec by every extra arr position
+        indexPos += 750;    //inc delay by one sec by every extra arr position
     } else if (sequence[i]=== '2'){
         setTimeout(function() {
           blueFlash();
         }, indexPos);
-        indexPos += 1000;
+        indexPos += 750;
     } else if (sequence[i] === '3'){
         setTimeout(function() {
           greenFlash();
         }, indexPos);
-        indexPos += 1000;
+        indexPos += 750;
     } else if (sequence[i] === '4'){
         setTimeout(function() {
           redFlash();
         }, indexPos);
-        indexPos += 1000;
+        indexPos += 750;
     }
   }
   indexPos = 0;
-  var sequenceCount = (sequence.length * 3000);
+  sequenceCount += 1200;
   setTimeout(function() {
   compareSequences();
 }, sequenceCount); //delay calling compare by 2 secs for every item in sequence arr
@@ -122,13 +122,16 @@ function compareSequences(){
       userSequence = [];                //wipe user sequence
       messageBoard.innerHTML = 'Well done!'; //show well done message and call new number
       scoreBoard.innerHTML = 'Score Count = ' + scoreCount;
+      alert(sequenceCount);
       startSequence();
     } else {              //else show loss message and play sequence again
       userSequence = [];
       scoreCount = 0;
       messageBoard.innerHTML = 'Sorry, you lose!';
       scoreBoard.innerHTML = 'Score Count = ' + scoreCount;
+      sequenceCount -= 1000;
       playColors();
+      alert(sequenceCount);
       }
     };
 
