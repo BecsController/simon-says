@@ -45,7 +45,7 @@ body {
   padding-bottom: .5rem;
 }
 .hide{
-  color: #000;
+  display: none;
 }
 .title{
   color: #fff;
@@ -62,14 +62,6 @@ body {
   justify-content: center;
   text-align: center;
   font-size: 4rem;
-}
-.userSeq, .compSeq{
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-size: 2rem;
 }
 .simon{
   height: 6rem;

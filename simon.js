@@ -7,8 +7,6 @@ var red = document.getElementsByClassName("red")[0];
 var yellow = document.getElementsByClassName("yellow")[0];
 var start = document.getElementsByClassName("start")[0];
 var messageBoard = document.getElementsByClassName("messageBoard")[0];
-var userSeqDisplay = document.getElementsByClassName("userSeq")[0];
-var compSeqDisplay = document.getElementsByClassName("compSeq")[0];
 var scoreBoard = document.getElementsByClassName("simon")[0];
 var resetButton = document.getElementsByClassName("reset")[0];
 var sequence = []; // empty arr to fill with pattern sequence
@@ -20,31 +18,26 @@ resetButton.addEventListener("click", reset);
 
 yellow.addEventListener("click", function(){
   userSequence.push('1');                     // push color number to user array
-  compSeqDisplay.innerHTML = 'user seq is: ' + userSequence;
   yellowFlash();
 });
 blue.addEventListener("click", function(){
   userSequence.push('2');
-  compSeqDisplay.innerHTML = 'user seq is: ' + userSequence;
   blueFlash();
 });
 green.addEventListener("click", function(){
   userSequence.push('3');
-  compSeqDisplay.innerHTML = 'user seq is: ' + userSequence;
   greenFlash();
 });
 red.addEventListener("click", function(){
   userSequence.push('4');
-  compSeqDisplay.innerHTML = 'user seq is: ' + userSequence;
   redFlash();
 });
 
 function startSequence(){
 start.classList.add("hide");
+start.removeEventListener("click", startSequence);
 var randomNo = Math.floor(Math.random() * 4); //generate random number between 1 and 4
 sequence.push(numArr[randomNo]);              //push random number to sequence array
-userSeqDisplay.innerHTML = 'comp seq is: ' + sequence;
-compSeqDisplay.innerHTML = 'user seq is: ' + userSequence;
 playColors();
 }
 
