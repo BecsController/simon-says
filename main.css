@@ -15,7 +15,10 @@ body {
   font-family: 'Merriweather', tahoma, lucida sans-serif, arial, sans-serif;
   background-color: black;
 }
-.button{
+.hide{
+  display: none;
+}
+.reset{
   color: #fff;
   display: flex;
   flex-direction: column;
