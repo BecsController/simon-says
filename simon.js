@@ -8,10 +8,12 @@ var yellow = document.getElementsByClassName("yellow")[0];
 var start = document.getElementsByClassName("start")[0];
 var messageBoard = document.getElementsByClassName("messageBoard")[0];
 var userSeqDisplay = document.getElementsByClassName("userSeq")[0];
-var audioOne = new Audio("/sounds/simonSound1.mp3");
-var audioTwo = new Audio("/sounds/simonSound2.mp3");
-var audioThree = new Audio("/sounds/simonSound3.mp3");
-var audioFour = new Audio("/sounds/simonSound4.mp3");
+var compSeqDisplay = document.getElementsByClassName("compSeq")[0];
+var scoreBoard = document.getElementsByClassName("simon")[0];
+//var audioOne = new Audio("/sounds/simonSound1.mp3");
+//var audioTwo = new Audio("/sounds/simonSound2.mp3");
+//var audioThree = new Audio("/sounds/simonSound3.mp3");
+//var audioFour = new Audio("/sounds/simonSound4.mp3");
 var sequence = []; // empty arr to fill with pattern sequence
 var numArr = ['1', '2', '3', '4']; //arr to choose random no: from that corresponds to colors
 var userSequence = [];
@@ -20,26 +22,30 @@ start.addEventListener("click", startSequence);
 
 yellow.addEventListener("click", function(){
   userSequence.push('1');                     // push color number to user array
+  compSeqDisplay.innerHTML = 'user seq is: ' + userSequence;
   yellowFlash();
 });
 blue.addEventListener("click", function(){
   userSequence.push('2');
+  compSeqDisplay.innerHTML = 'user seq is: ' + userSequence;
   blueFlash();
 });
 green.addEventListener("click", function(){
   userSequence.push('3');
+  compSeqDisplay.innerHTML = 'user seq is: ' + userSequence;
   greenFlash();
 });
 red.addEventListener("click", function(){
   userSequence.push('4');
+  compSeqDisplay.innerHTML = 'user seq is: ' + userSequence;
   redFlash();
 });
-
 
 function startSequence(){
 var randomNo = Math.floor(Math.random() * 4);
 sequence.push(numArr[randomNo]);
-userSeqDisplay.innerHTML = sequence;
+userSeqDisplay.innerHTML = 'comp seq is: ' + sequence;
+compSeqDisplay.innerHTML = 'user seq is: ' + userSequence;
 playColors();
 }
 
@@ -75,7 +81,7 @@ function playColors(){
         setTimeout(function() {
           yellowFlash();
         }, indexPos);         //set delay to run color flash
-        indexPos += 1000;    //inc delay by one dec
+        indexPos += 1000;    //inc delay by one sec by every extra arr position
     } else if (sequence[i]=== '2'){
         setTimeout(function() {
           blueFlash();
@@ -93,26 +99,32 @@ function playColors(){
         indexPos += 1000;
     }
   }
-  indexPos = 0;     //after iterated through entire arr reset delay
+  indexPos = 0;
+  var sequenceCount = (sequence.length * 2000);
   setTimeout(function() {
   compareSequences();
-  }, 8000);
+}, sequenceCount); //delay calling compare by 3 secs for every item in sequence arr
 };
-
+var scoreCount = 0;
 function compareSequences(){
-  if (userSequence.length != sequence.length)
-        sequence = [];
-        userSequence = [];
-        messageBoard.innerHTML = 'You lose!';
-    for (var i = 0, l=this.length; i < l; i++) {
-        if (userSequence[i] != sequence[i]) {
-          sequence = [];
-          userSequence = [];
-          messageBoard.innerHTML = 'You lose!';
-        }
+  var rightCount = 0;
+    for (var i = 0; i < sequence.length; i++) {
+      if (userSequence[i] == sequence[i]){ //compare comp sequence with user sequence
+        rightCount++; //count how many matches
+      }
     }
-      messageBoard.innerHTML = 'Well done!';
+    if (rightCount == sequence.length){ //if number of matches is same as computer array length
+      scoreCount++;
+      userSequence = [];                //wipe user sequence
+      messageBoard.innerHTML = 'Well done!'; //show well done message and call new number
+      scoreBoard.innerHTML = 'Score Count = ' + scoreCount;
       startSequence();
-};
-
+    } else {              //else show loss message and play sequence again
+      userSequence = [];
+      scoreCount = 0;
+      messageBoard.innerHTML = 'Sorry, you lose!';
+      scoreBoard.innerHTML = 'Score Count = ' + scoreCount;
+      playColors();
+      }
+    };
 }
