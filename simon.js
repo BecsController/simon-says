@@ -10,15 +10,13 @@ var messageBoard = document.getElementsByClassName("messageBoard")[0];
 var userSeqDisplay = document.getElementsByClassName("userSeq")[0];
 var compSeqDisplay = document.getElementsByClassName("compSeq")[0];
 var scoreBoard = document.getElementsByClassName("simon")[0];
-//var audioOne = new Audio("/sounds/simonSound1.mp3");
-//var audioTwo = new Audio("/sounds/simonSound2.mp3");
-//var audioThree = new Audio("/sounds/simonSound3.mp3");
-//var audioFour = new Audio("/sounds/simonSound4.mp3");
+var resetButton = document.getElementsByClassName("reset")[0];
 var sequence = []; // empty arr to fill with pattern sequence
 var numArr = ['1', '2', '3', '4']; //arr to choose random no: from that corresponds to colors
 var userSequence = [];
 
 start.addEventListener("click", startSequence);
+resetButton.addEventListener("click", reset);
 
 yellow.addEventListener("click", function(){
   userSequence.push('1');                     // push color number to user array
@@ -42,6 +40,7 @@ red.addEventListener("click", function(){
 });
 
 function startSequence(){
+start.classList.add("hide");
 var randomNo = Math.floor(Math.random() * 4); //generate random number between 1 and 4
 sequence.push(numArr[randomNo]);              //push random number to sequence array
 userSeqDisplay.innerHTML = 'comp seq is: ' + sequence;
@@ -129,4 +128,9 @@ function compareSequences(){
       playColors();
       }
     };
+
+  function reset(){
+    location.reload();
+  };
+
 }
