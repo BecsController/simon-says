@@ -15,9 +15,6 @@ body {
   font-family: 'Merriweather', tahoma, lucida sans-serif, arial, sans-serif;
   background-color: black;
 }
-.hide{
-  display: none;
-}
 .reset{
   color: #fff;
   display: flex;
@@ -46,6 +43,9 @@ body {
   text-align: center;
   font-size: 2rem;
   padding-bottom: .5rem;
+}
+.hide{
+  color: #000;
 }
 .title{
   color: #fff;
