@@ -102,7 +102,7 @@ function playColors(){
     }
   }
   indexPos = 0;
-  var sequenceCount = (sequence.length * 2000);
+  var sequenceCount = (sequence.length * 3000);
   setTimeout(function() {
   compareSequences();
 }, sequenceCount); //delay calling compare by 2 secs for every item in sequence arr
