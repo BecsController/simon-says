@@ -21,60 +21,68 @@ start.addEventListener("click", function(){
     startSequence();
   }, 2000);
 });
+
 resetButton.addEventListener("click", reset);
 
 yellow.addEventListener("click", function(){
   userSequence.push('1');                     // push color number to user array
   yellowFlash();
 });
+
 blue.addEventListener("click", function(){
   userSequence.push('2');
   blueFlash();
 });
+
 green.addEventListener("click", function(){
   userSequence.push('3');
   greenFlash();
 });
+
 red.addEventListener("click", function(){
   userSequence.push('4');
   redFlash();
 });
 
 function startSequence(){
-start.removeEventListener("click", startSequence);
-var randomNo = Math.floor(Math.random() * 4); //generate random number between 1 and 4
-sequence.push(numArr[randomNo]);              //push random number to sequence array
-playColors();
+  start.removeEventListener("click", startSequence);
+  var randomNo = Math.floor(Math.random() * 4); //generate random number between 1 and 4
+  sequence.push(numArr[randomNo]);              //push random number to sequence array
+  playColors();
 }
 
 function yellowFlash(){
-  yellow.style.backgroundColor = "#E2BA00";
-  new Audio("sounds/re.mp3").play();
-  setTimeout(function() {
-  yellow.style.backgroundColor = "yellow";
-}, 250);
+    yellow.style.backgroundColor = "#E2BA00";
+    new Audio("sounds/re.mp3").play();
+    setTimeout(function() {
+    yellow.style.backgroundColor = "yellow";
+  }, 250);
 };
+
 function blueFlash(){
-  blue.style.backgroundColor = "#5054B4";
-  new Audio("sounds/mi.mp3").play();
-  setTimeout(function() {
-  blue.style.backgroundColor = "blue";
-}, 250);
+    blue.style.backgroundColor = "#5054B4";
+    new Audio("sounds/mi.mp3").play();
+    setTimeout(function() {
+    blue.style.backgroundColor = "blue";
+  }, 250);
 };
+
 function greenFlash(){
-  green.style.backgroundColor = "#004400";
-  new Audio("sounds/fa.mp3").play();
-  setTimeout(function() {
-  green.style.backgroundColor = "green";
-}, 250);
+    green.style.backgroundColor = "#004400";
+    new Audio("sounds/fa.mp3").play();
+    setTimeout(function() {
+    green.style.backgroundColor = "green";
+  }, 250);
 };
+
 function redFlash(){
-  red.style.backgroundColor = "#76322B";
-  new Audio("sounds/so.mp3").play();
-  setTimeout(function() {
-  red.style.backgroundColor = "red";
-}, 250);
+    red.style.backgroundColor = "#76322B";
+    new Audio("sounds/so.mp3").play();
+    setTimeout(function() {
+    red.style.backgroundColor = "red";
+  }, 250);
 };
+
 var sequenceCount = 2500;
 var indexPos = 0;
 function playColors(){
@@ -104,8 +112,8 @@ function playColors(){
   indexPos = 0;
   sequenceCount += 1200;
   setTimeout(function() {
-  compareSequences();
-}, sequenceCount); //delay calling compare by 2 secs for every item in sequence arr
+    compareSequences();
+  }, sequenceCount); //delay calling compare by 2 secs for every item in sequence arr
 };
 
 var scoreCount = 0;
@@ -123,6 +131,7 @@ function compareSequences(){
       messageBoard.innerHTML = 'Well done!'; //show well done message and call new number
       scoreBoard.innerHTML = 'Score Count = ' + scoreCount;
       startSequence();
+
     } else {              //else show loss message and play sequence again
       userSequence = [];
       scoreCount = 0;
@@ -136,5 +145,4 @@ function compareSequences(){
   function reset(){
     location.reload();
   };
-
 }
